@@ -1,0 +1,10 @@
+{
+    "presets": [
+        "env",
+        "react",//cnpm i babel-preset-react -D    处理jsx语法  react预设
+        "stage-0"  //cnpm i babel-preset-stage-0 -D    箭头函数预设        
+    ],
+    "plugins": [
+        "transform-decorators-legacy"
+    ]
+}
