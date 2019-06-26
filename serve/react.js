@@ -241,6 +241,7 @@ router.post("/islogin",(req,res)=>{
                     })  
                 }
             })
+            db.close();
         })
     }else{
         res.json({
@@ -261,7 +262,7 @@ router.get("/musiclist",(req,res)=>{
         if(err)throw err;
         db.collection("music").find().toArray((err,result)=>{
             if(err) throw err;
-            console.log(result);
+            console.log(result.length);
             res.json({
                 code:200,
                 type:1,
@@ -272,5 +273,28 @@ router.get("/musiclist",(req,res)=>{
         })
     })
 })
+
+
+//推荐阅读接口
+router.get("/news",(req,res)=>{
+    conn((err,db)=>{
+        if(err) throw err;
+        db.collection("news").find().toArray((err,result)=>{
+            if(err) throw err;
+            console.log(result.length);
+            res.json({
+                code:200,
+                type:1,
+                msg:"获取成功",
+                result
+            })
+            db.close();
+        })
+    })
+})
+
+
+
+
 
 module.exports=router;

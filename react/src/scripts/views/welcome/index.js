@@ -1,5 +1,5 @@
 import {connect} from "react-redux"
-import { changeLogin,checkLogin } from "../../actions";
+import { changeLogin,checkLogin,changeLoginList } from "../../actions";
 import "./index.less"
 import imgurl from "@/assets/images/welcome.jpg"
 import axios from "axios"
@@ -14,7 +14,8 @@ import history from "history"
     dispatch=>{
         return {
             changelogin:(username)=>dispatch(changeLogin(username)),
-            islogin:()=>dispatch(checkLogin())
+            islogin:()=>dispatch(checkLogin()),
+            changeLoginList:()=>dispatch(changeLoginList()),
         }
     }
 )
@@ -40,8 +41,17 @@ export class Welcome extends Component{
             // clearTimeout();
             if(flag){
                 //通过token判断登录状态，已登录跳转到首页，更改登录状态和用户名
-                this.props.history.push("/app/home")
-                this.props.changelogin(this.props.loginstate.login.username)
+                console .log("denglulllllllll")
+                console.log(this.props)
+                if(this.props.loginstate.login.type==1){
+                  this.props.history.push("/app/home")
+                  this.props.changelogin(this.props.loginstate.login.username)
+                }else{
+                    this.props.changeLoginList();//清空登录的返回值
+                    this.props.history.push("/login");
+                   
+                }
+           
               
             }else{
                   // 判断localstoreg:count次数  >1  不用导读  

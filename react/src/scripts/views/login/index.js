@@ -34,7 +34,7 @@ export class Login extends Component{
                         <Route path="/login/" exact render={()=>(<Redirect to="/login/pwd" />) }/>
                     </Switch>
                 </div>
-                
+                <p className="gohome"><NavLink to="/app/">暂时不登录，先去看看</NavLink></p>
                 <div className="loginmore">
                     <h3>第三方登录</h3>
                     <ul>

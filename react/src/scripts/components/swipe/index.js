@@ -24,7 +24,10 @@ export class Lunbo extends Component{
     }
 
     componentDidMount(){
-        this.props.getlist()
+        if(this.props.data.musicData.length==0){//避免多次请求
+            this.props.getlist()
+        }
+        
         var mySwiper =new Swiper(".swiper-container",{
             loop:true,
             direction:"horizontal", 
